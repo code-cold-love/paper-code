@@ -1,9 +1,11 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+from torch import nn
 from transformers import AutoConfig, AutoTokenizer
 
-from attention import MultiHeadAttention
-from layers import *
+from Transformer.attention import MultiHeadAttention
+from Transformer.encoder import TransformerEncoder, TransformerEncoderLayer
+from Transformer.layers import FeedForward
 
 if __name__ == "__main__":
     model_ckpt = "bert-base-uncased"

@@ -3,7 +3,7 @@
 import torch
 from torch import nn
 
-from Transformer.utils import scaled_dot_product_attention
+from utils import scaled_dot_product_attention
 
 
 class AttentionHead(nn.Module):

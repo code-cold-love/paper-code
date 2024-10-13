@@ -3,8 +3,8 @@
 import torch
 from torch import nn
 
-from Transformer.decoder import TransformerDecoder
-from Transformer.encoder import TransformerEncoder
+from decoder import TransformerDecoder
+from encoder import TransformerEncoder
 
 
 class Transformer(nn.Module):

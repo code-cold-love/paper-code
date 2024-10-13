@@ -3,9 +3,9 @@
 from torch import nn
 from transformers import AutoConfig, AutoTokenizer
 
-from Transformer.attention import MultiHeadAttention
-from Transformer.encoder import TransformerEncoder, TransformerEncoderLayer
-from Transformer.layers import FeedForward
+from attention import MultiHeadAttention
+from encoder import TransformerEncoder, TransformerEncoderLayer
+from layers import FeedForward
 
 if __name__ == "__main__":
     model_ckpt = "bert-base-uncased"

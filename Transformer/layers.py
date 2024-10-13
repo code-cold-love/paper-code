@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 import torch
 from torch import nn
-from transformers.configuration_utils import PretrainedConfig
+from transformers import PretrainedConfig
 
 
 class FeedForward(nn.Module):
@@ -14,7 +14,7 @@ class FeedForward(nn.Module):
         self.linear2 = nn.Linear(config.intermediate_size, config.hidden_size)
         self.dropout = nn.Dropout(config.hidden_dropout_prob)
 
-    def forward(self, x: torch.Tensor):
+    def forward(self, x: torch.Tensor) -> torch.Tensor:
         return self.dropout(self.linear2(self.activation(self.linear1(x))))
 
 
@@ -29,7 +29,7 @@ class PositionalEmbeddings(nn.Module):
         self.layer_norm = nn.LayerNorm(config.hidden_size, eps=1e-12)
         self.dropout = nn.Dropout()
 
-    def forward(self, input_ids: torch.Tensor):
+    def forward(self, input_ids: torch.Tensor) -> torch.Tensor:
         seq_len = input_ids.size(1)
         position_ids = torch.arange(seq_len, dtype=torch.long).unsqueeze(0)
 

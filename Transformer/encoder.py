@@ -3,8 +3,8 @@
 import torch
 from torch import nn
 
-from Transformer.attention import MultiHeadAttention
-from Transformer.layers import FeedForward, PositionalEmbeddings
+from attention import MultiHeadAttention
+from layers import FeedForward, PositionalEmbeddings
 
 
 class TransformerEncoderLayer(nn.Module):

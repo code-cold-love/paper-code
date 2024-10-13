@@ -1,13 +1,39 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+import random
 from math import sqrt
+from typing import Union
 
+import numpy as np
 import torch
 import torch.nn.functional as F
 
 
+def set_random_seed(seed: Union[int, float]):
+    random.seed(seed)
+    np.random.seed(seed)
+    torch.manual_seed(seed)
+    torch.cuda.manual_seed(seed)
+    torch.cuda.manual_seed_all(seed)
+    # torch.backends.cudnn.deterministic = True  # 确保每次卷积算法选择都是确定的
+    # torch.backends.cudnn.benchmark = False  # 关闭 CuDNN 自动优化功能，确保结果可复现
+
+
+def try_gpu(i: int = 0):
+    """Return gpu(i) if exists, otherwise return cpu()."""
+    if torch.cuda.device_count() > i:
+        return torch.device(f"cuda:{i}")
+    return torch.device("cpu")
+
+
+def try_all_gpus():
+    """Return all available GPUs, or [cpu(),] if none."""
+    devices = [torch.device(f"cuda:{i}") for i in range(torch.cuda.device_count())]
+    return devices if devices else [torch.device("cpu")]
+
+
 def scaled_dot_product_attention(
-    query, key, value, query_mask=None, key_mask=None, mask=None
+        query, key, value, query_mask=None, key_mask=None, mask=None
 ):
     """缩放点积注意力
 

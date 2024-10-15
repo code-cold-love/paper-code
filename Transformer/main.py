@@ -9,7 +9,7 @@ from layers import FeedForward
 
 if __name__ == "__main__":
     model_ckpt = "bert-base-uncased"
-    BERT_PATH = r"D:\Privacy4\transformers\bert-base-uncased_L-12_H-768_A-12"
+    BERT_PATH = r"D:\Privacy4\huggingface-hub\bert-base-uncased_L-12_H-768_A-12"
     text = "time flies like an arrow"
 
     tokenizer = AutoTokenizer.from_pretrained(BERT_PATH)

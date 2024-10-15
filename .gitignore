@@ -138,5 +138,6 @@ dmypy.json
 cython_debug/
 
 test*.py
+test*.ipynb
 .wakatime-project
 .idea
